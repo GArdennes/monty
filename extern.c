@@ -9,6 +9,7 @@ void extern_clear(void)
 	file_name = NULL;
 	args = NULL;
 	line_count = 0;
+	flag_s = 0;
 }
 
 /**

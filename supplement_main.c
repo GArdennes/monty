@@ -52,6 +52,14 @@ int execute_cmds(stack_t **stack, char *input)
 	instruction_t op_built[] = {
 		{"push", op_push},
 		{"pall", op_pall},
+		{"pop", op_pop},
+		{"nop", op_nop},
+		{"swap", op_swap},
+		{"sub", op_sub},
+		{"add", op_add},
+		{"mul", op_mul},
+		{"mod", op_mod},
+		{"pchar", op_pchar},
 		{NULL, NULL}
 	};
 
