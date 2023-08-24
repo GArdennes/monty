@@ -21,13 +21,15 @@ void op_push(stack_t **stack, unsigned int line_number)
 		if (x == 1)
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line_number);
-			extern_free(*stack);
+			/*free(content);*/
+			exit(EXIT_FAILURE);
 		}
 	}
 	else
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		extern_free(*stack);
+		/*extern_free(*stack);*/
+		exit(EXIT_FAILURE);
 	}
 	check = atoi(args);
 	if (flag_s == 0)

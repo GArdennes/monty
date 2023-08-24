@@ -1,13 +1,21 @@
 #include "monty.h"
 
 /**
- * main - entry point of program
- * @argc: argument count
- * @argv: argument vector
+ * main - main entry program
+ * @argc: the arguments to count
+ * @argv: the argument vector
  * Return: On success int
  */
 int main(int argc, char **argv)
 {
+	size_t buf = 0;
+	int r = 0, check = 0, i;
+	stack_t *stack = NULL;
+	char *input = malloc(sizeof(char) * 1024);
+
+	if (input == NULL)
+		exit(EXIT_FAILURE);
+
 	extern_clear();
 	if (argc == 2)
 	{
@@ -23,29 +31,15 @@ int main(int argc, char **argv)
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	monty(argv);
-	fclose(file_name);
-
-	return (0);
-}
-
-/**
- * monty - main monty program
- * @argv: argument vector
- * Return: On success int
- */
-int monty(char **argv)
-{
-	int r = 0;
-	int check = 0, i;
-	char *input = NULL;
-	stack_t *stack = NULL;
-	(void)argv;
-
 	extern_set();
 	while (r != -1)
 	{
-		r = get_input();
+		/*read = fgets(content, buf, file_name);*/
+		if (fgets(content, buf, file_name) != NULL)
+			r = 0;
+		else
+			r = -1;
+		line_count++;
 		if (r != -1)
 		{
 			input = input_buf();
@@ -53,14 +47,16 @@ int monty(char **argv)
 			if (check == -1)
 			{
 				i = line_count;
-				fprintf(stderr, "L%d: unknown instruction %s\n", i, input);
-				extern_free(stack);
+				fprintf(stderr, "L%d: unknown instructions %s\n", i, input);
+				free(stack);
+				fclose(file_name);
 				exit(EXIT_FAILURE);
 			}
 		}
-		extern_free(NULL);
 	}
-	extern_free(stack);
-
+	free(stack);
+	free(input);
+	extern_free(NULL);
 	return (0);
 }
+

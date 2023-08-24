@@ -9,9 +9,11 @@
 #include <ctype.h>
 #include <sys/types.h>
 
+#define _GNU_SOURCE
+
 char *args, *content;
 FILE *file_name;
-int line_count;
+unsigned int line_count;
 int flag_s;
 
 /**
