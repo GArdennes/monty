@@ -64,10 +64,11 @@ void op_rotr(stack_t **stack, unsigned int line_number);
 
 /*main program functions*/
 int monty(char **argv);
-ssize_t get_input(void);
+int get_input(void);
 char *input_buf(void);
 int execute_cmds(stack_t **stack, char *input);
 void extern_clear(void);
+void extern_set(void);
 void extern_free(stack_t *stack);
 void free_stack(stack_t *stack);
 

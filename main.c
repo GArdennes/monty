@@ -8,6 +8,7 @@
  */
 int main(int argc, char **argv)
 {
+	extern_clear();
 	if (argc == 2)
 	{
 		file_name = fopen(argv[1], "r");
@@ -23,6 +24,7 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	monty(argv);
+	fclose(file_name);
 
 	return (0);
 }
@@ -34,13 +36,13 @@ int main(int argc, char **argv)
  */
 int monty(char **argv)
 {
-	ssize_t r = 0;
+	int r = 0;
 	int check = 0, i;
 	char *input = NULL;
 	stack_t *stack = NULL;
 	(void)argv;
 
-	extern_clear();
+	extern_set();
 	while (r != -1)
 	{
 		r = get_input();

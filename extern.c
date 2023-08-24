@@ -41,3 +41,12 @@ void free_stack(stack_t *stack)
 		(stack) = node;
 	}
 }
+
+/**
+ * extern_set - initializes extern variables
+ */
+void extern_set(void)
+{
+	content = malloc(sizeof(char) * 1024);
+	args = malloc(sizeof(char) * 1024);
+}

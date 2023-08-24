@@ -4,7 +4,7 @@
  * get_input - function that gets file content
  * Return: On success ssize_t
  */
-ssize_t get_input(void)
+int get_input(void)
 {
 	size_t buf = 0;
 	char *read = NULL;
@@ -63,7 +63,7 @@ int execute_cmds(stack_t **stack, char *input)
 		{NULL, NULL}
 	};
 
-	for (i = 0; op_built[i].f && input; i++)
+	for (i = 0; op_built[i].opcode && input; i++)
 	{
 		if (strcmp(input, op_built[i].opcode) == 0)
 		{
