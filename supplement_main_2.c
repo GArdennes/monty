@@ -66,7 +66,7 @@ int execute_cmds(stack_t **stack, char *input)
 		{NULL, NULL}
 	};
 
-	for (i = 0; op_built[i].opcode && input; i++)
+	for (i = 0; op_built[i].f && input; i++)
 	{
 		if (strcmp(input, op_built[i].opcode) == 0)
 		{
