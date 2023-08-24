@@ -11,6 +11,7 @@
 
 char *args, *content;
 FILE *file_name;
+int line_count;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -55,5 +56,19 @@ void op_mul(stack_t **stack, unsigned int line_number);
 void op_mod(stack_t **stack, unsigned int line_number);
 void op_pchar(stack_t **stack, unsigned int line_number);
 void op_pstr(stack_t **stack, unsigned int line_number);
+void op_rotl(stack_t **stack, unsigned int line_number);
+void op_rotr(stack_t **stack, unsigned int line_number);
+
+/*main program functions*/
+int monty(char **argv);
+ssize_t get_input(void);
+char *input_buf(void);
+int execute_cmds(stack_t **stack, char *input);
+void extern_clear(void);
+void extern_free(stack_t *stack);
+void free_stack(stack_t *stack);
+
+/*not included in c89 standard*/
+char *_strdup(const char *s);
 
 #endif
