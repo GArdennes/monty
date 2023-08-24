@@ -24,8 +24,6 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	monty(argv);
-	fclose(file_name);
-
 	return (0);
 }
 
@@ -38,9 +36,12 @@ int monty(char **argv)
 {
 	int r = 0;
 	int check = 0, i;
-	char *input = NULL;
+	char *input = malloc(sizeof(char) * 1024);
 	stack_t *stack = NULL;
 	(void)argv;
+
+	if (input == NULL)
+		exit(EXIT_FAILURE);
 
 	extern_set();
 	while (r != -1)
@@ -54,13 +55,15 @@ int monty(char **argv)
 			{
 				i = line_count;
 				fprintf(stderr, "L%d: unknown instruction %s\n", i, input);
-				/*extern_free(stack);*/
+				free(stack);
+				fclose(file_name);
 				exit(EXIT_FAILURE);
 			}
 		}
-		/*extern_free(NULL);*/
 	}
-	extern_free(stack);
+	free(stack);
+	free(input);
+	extern_free(NULL);
 
 	return (0);
 }

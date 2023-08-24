@@ -61,12 +61,10 @@ int execute_cmds(stack_t **stack, char *input)
 		{"mod", op_mod},
 		{"pchar", op_pchar},
 		{"pstr", op_pstr},
-		{"rotl", op_rotl},
-		{"rotr", op_rotr},
 		{NULL, NULL}
 	};
 
-	for (i = 0; op_built[i].f && input; i++)
+	for (i = 0; op_built[i].opcode && input; i++)
 	{
 		if (strcmp(input, op_built[i].opcode) == 0)
 		{
